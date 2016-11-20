@@ -1,0 +1,37 @@
+<ion-view view-title="Factor">
+  <ion-content class="has-footer">
+    <ion-header-bar class="bar-positive">
+      <div class="buttons">
+        <button class="button button-icon icon ion-ios-trash"
+                ng-click="data.showDelete = !data.showDelete; data.showReorder = false;"></button>
+      </div>
+      <h1 class="title"></h1>
+      <div class="buttons">
+        <button class="button button-icon icon ion-plus-round" ng-click="addItem()">
+        </button>
+      </div>
+    </ion-header-bar>
+    <ion-list show-delete="data.showDelete">
+      <ion-item style="height: 44px;"></ion-item>
+      <ion-item ng-repeat="item in factor" ng-click="editItem(item)">
+        <ion-delete-button class="ion-ios-close"
+                           ng-click="removeItem(item,$index);">
+        </ion-delete-button>
+        <h2>{{item.name}}</h2>
+        <p>{{item.size}} * {{item.singleCost}} = {{item.price}}</p>
+        <span></span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar align-title="left" >
+    <div class="buttons" ng-if="0" ng-click="addItem()">
+      <button class="button" style="border-radius: 50%;background-color: red;font-size: 20px;color: white;width: 35px" >+</button>
+    </div>
+    <h1 class="title">{{sumOfCost}}</h1>
+    <div class="buttons">
+      <button class="button button-positive" style="color: white;background-color: #0c60ee;" ng-click="finish()">Finish</button>
+    </div>
+
+  </ion-footer-bar>
+
+</ion-view>

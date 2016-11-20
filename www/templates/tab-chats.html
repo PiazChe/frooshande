@@ -1,0 +1,49 @@
+<ion-view view-title="Sources">
+  <ion-content scrollbar-x="false">
+    <div style="height: 44px"></div>
+    <ion-header-bar class="bar-positive">
+      <div class="buttons">
+        <button class="button button-icon icon icon ion-ios-trash"
+                ng-click="data.showDeleteSource = !data.showDeleteSource;"></button>
+      </div>
+      <h1 class="title"></h1>
+      <div class="buttons">
+        <button class="button button-icon button-assertive icon ion-android-search" ng-click="searchSource()">
+        </button>
+        <button class="button button-icon button-assertive icon ion-plus-round" ng-click="addSource()">
+        </button>
+      </div>
+    </ion-header-bar>
+    <ion-list show-delete="data.showDeleteSource">
+      <ion-item ng-repeat="item in sources" ng-click="description(sources[$index])" >
+        <ion-delete-button class="ion-minus-circled"
+                           ng-click="removeSource(item,$index);">
+        </ion-delete-button>
+        <h3 style="line-height: 20px" class="row"><span class="col col-75">{{item.name}}</span><span class="col col-25">{{item.company}}</span></h3>
+          <div ng-if="item.remain/item.size * 100 <25" style="width: 208px;border-right: solid 1px #b2b2b2;height: 12px;;position: absolute;bottom: 0;"><div style="height: 12px;position: absolute;bottom: 0; width: {{item.remain/item.size * 208}}px;background-color: red"></div></div>
+        <div ng-if="item.remain/item.size * 100 >=25" style="width: 208px;border-right: solid 1px #b2b2b2;height: 12px;position: absolute;bottom: 0;"><div style="height: 12px;position: absolute;bottom: 0; width: {{item.remain/item.size * 208}}px;background-color: deepskyblue"></div></div>
+      </ion-item>
+    </ion-list>
+    <!--<ion-header-bar>-->
+    <!--<div class="buttons" ng-click="addItem()">-->
+    <!--<button ng-click="addSource()" class="button" style="border-radius: 50%;background-color: red;font-size: 20px;color: white;width: 35px" >+</button>-->
+    <!--</div>-->
+    <!--</ion-header-bar>-->
+    <!--<div class="row row-wrap">-->
+      <!--<div class=" col col-50" style="position: relative;" ng-repeat="item in sources" ng-click="description(sources[$index])"  type="item-text-wrap" href="#/tab/chats/{{sources.id}}">-->
+       <!--<div style="width: 100%;height: 212px;position: relative;border: solid black 2px">-->
+         <!--<div ng-if="item.remain/item.size * 100 <25" style="width: 100%;position: absolute;bottom: 0; height: {{item.remain/item.size * 208}}px;background-color: red"></div>-->
+         <!--<div ng-if="item.remain/item.size * 100 >=25" style="width: 100%;position: absolute;bottom: 0; height: {{item.remain/item.size * 208}}px;background-color: green"></div>-->
+       <!--</div>-->
+        <!--<p>{{item.name}}</p>-->
+        <!--<ion-delete-button class="ion-minus-circled" ng-click="removeSource(item)"></ion-delete-button>-->
+      <!--</div>-->
+    <!--</div>-->
+  </ion-content>
+  <!--<ion-footer-bar>-->
+    <!--<h1 class="title"></h1>-->
+    <!--&lt;!&ndash;<div class="buttons">&ndash;&gt;-->
+      <!--&lt;!&ndash;<button class="button button-icon icon ion-android-search" ng-click="searchSource()" style="border-radius: 50%;background-color: #0c60ee;font-size: 15px;color: white;width: 35px;padding: 0" ></button>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--</ion-footer-bar>-->
+</ion-view>

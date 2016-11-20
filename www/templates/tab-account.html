@@ -1,0 +1,29 @@
+<ion-view view-title="Account">
+  <ion-content>
+    <ion-header-bar class="bar-positive">
+      <div class="buttons">
+        <button class="button button-icon icon icon ion-ios-trash"
+                ng-click="data.showDeleteReport = !data.showDeleteReport;"></button>
+      </div>
+      <h1 class="title"></h1>
+      <div class="buttons">
+        <button class="button button-icon icon ion-ios-cloud-download" ng-click="addReport()">
+        </button>
+      </div>
+    </ion-header-bar>
+    <ion-list show-delete="data.showDeleteReport">
+      <ion-item style="height: 44px;"></ion-item>
+      <ion-item ng-repeat="item in reports track by $index">
+        <i class=""></i>
+        {{item.date}}
+        <span class="item-note">
+          <span> {{item.reportMoney}}</span>
+           <ion-delete-button class="ion-minus-circled"
+                              ng-click="removeReport(item,$index);">
+           </ion-delete-button>
+        </span>
+        <p></p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
